@@ -60,14 +60,14 @@ function writeTableWith(dataSource){
     console.log(dataSource)
     //First, we create column headers. Any column header with the class 'all' will be shown by default, any header with the class 'none' will be hidden by default
 
-    $( "thead" ).append( "<tr><th class='all'></th><th class='all'>Name</th><th class='all'>Ordainment</th><th class='all'>Year faculties withdrawn</th><th class='all'>Year lacized</th><th class='all'>Retired</th><th class='all'>Died</th><th class='none'>Assignments</th></tr>" );
+    $( "thead" ).append( "<tr><th class='all'></th><th class='all'>Name</th><th class='all'>Ordainment</th><th class='all'>Year faculties withdrawn</th><th class='all'>Year lacized</th><th class='all'>Retired</th><th class='all'>Died</th><th class='none'>Assignments</th><th class='none'>Additional notes</th></tr>" );
 
 
  
 
 //We create the datatable 
 
-    var table = $('#incidents_table').DataTable({
+var table = $('#incidents_table').DataTable({
     "deferRender": true,
     "data": dataSource,
     "rowReorder": {
@@ -79,21 +79,17 @@ function writeTableWith(dataSource){
         "details": {
             renderer: function ( api, rowIdx, columns ) {
                 var data = $.map( columns, function ( col, i ) {
-                    ass_table = $('#ass-table').html('<table/>')
-                    ass_list = col.data.split(';')
-                          $.each(ass_list, function(index, value){
-                            $(ass_table).append('<tr>' + value + '</tr>')
-                          })
+                   
 
                     return col.hidden ?
                         '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
                             '<td style="font-weight:bold;">'+col.title+':'+'</td> '+
-                            '<td id="ass-table">'+ col.data + '</td>'+
+                            '<td id="ass-table">'+ format(col.data) + '</td>'+
                         '</tr>' :
                         '';
                 } ).join('');
 
-       var pymChild = new pym.Child(); 
+            var pymChild = new pym.Child(); 
                 return data ?
                     $('<table/>').append( data ) :
                     false;
@@ -140,7 +136,7 @@ function writeTableWith(dataSource){
             },
         },
           {
-              "data": null,
+            "data": null,
             render: function(data,type,row, meta) {
 
                     data = '' +
@@ -217,6 +213,21 @@ function writeTableWith(dataSource){
         {
             "data": "Assignments"
         },
+
+        {
+           "data": null,
+            render: function(data,type,row, meta) {
+
+                // This is where each column of data is rendered, depending on what it's called in the json. This part renders the first and last name together in the same column. It also displays the first name and last name together but then lets you sort by last name.
+
+                if (data['Additional notes']) {
+                    data = data['Additional notes'];
+                }  else {
+                    data  ='N/A';
+                }
+                return data;
+            },
+        },
          {
             // Added this so we can default sort the names by last name without making visible
             "data": "Last",
@@ -225,7 +236,7 @@ function writeTableWith(dataSource){
     ],
 
     "order": [
-        [8, 'asc']
+        [9, 'asc']
     ]
 }).on( 'order.dt',  function () {  
        var pymChild = new pym.Child(); 
@@ -242,7 +253,24 @@ function writeTableWith(dataSource){
        var pymChild = new pym.Child(); 
        } )
 
+    function format(v) {
 
+        if (v) { 
+
+        ass_list = v.split(';')
+        ass_holder = '<ul>';
+
+        $.each(ass_list, function(index, value){
+                this_ass = '<li id="single_assignment">'  + value + "</li>"
+                ass_holder = ass_holder + this_ass
+            })
+
+        return ass_holder + "</ul>"
+    } else {
+        return "N/A"
+    }
+            
+    }
 
 $('#incidents_table').on('click', 'td.details-control', function () {
        
