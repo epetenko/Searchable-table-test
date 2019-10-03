@@ -58,9 +58,7 @@ div.download a {
 	float: left;
 }
 
-#incidents_table_wrapper {
-	margin-top: 30px;
-}
+
 
 
 .source {
@@ -75,6 +73,10 @@ div.download a {
  table#incidents_table, table#incidents_table a, table#incidents_table.dataTable tbody tr{
 		font-size: 14px!important;
 
+	}
+
+	table#incidents_table thead {
+		visibility: hidden;
 	}
 
 .dataTables_info, .dataTables_paginate {
@@ -92,7 +94,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
 
 table .details-control, thead .details-control, tbody .details-control, tfoot .details-control, tr .details-control, td .details-control, th .details-control {
 	width: 10%;
+	font-weight:bold;
 }
+
+
 
 table.dataTable>tbody>tr.child ul {
 	display: inline;
@@ -139,15 +144,17 @@ table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even, tab
 }
 
 .dataTables_filter {
-	clear: right!important;
+	clear: both !important;
+	float: left !important;
 
 }
 
+.dataTables_length {
+	display: none;
+}
+
 .dataTables_info {
-	padding: 10px;
-	margin: 20px 0;
-	background-color: #EE9621;
-	color: #FFF!important;
+	visibility: hidden;
 }
 
 

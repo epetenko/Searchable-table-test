@@ -60,7 +60,7 @@ function writeTableWith(dataSource){
     console.log(dataSource)
     //First, we create column headers. Any column header with the class 'all' will be shown by default, any header with the class 'none' will be hidden by default
 
-    $( "thead" ).append( "<tr><th class='all'></th><th class='all'>Name</th><th class='all'>Ordainment</th><th class='all'>Year faculties withdrawn</th><th class='all'>Year lacized</th><th class='all'>Retired</th><th class='all'>Died</th><th class='none'>Assignments</th><th class='none'>Additional notes</th></tr>" );
+    $( "thead" ).append( "<tr><th class='all'>Name</th><th class='none'>Ordainment</th><th class='none'>Year faculties withdrawn</th><th class='none'>Year lacized</th><th class='none'>Retired</th><th class='none'>Died</th><th class='none'>Assignments</th><th class='none'>Additional notes</th></tr>" );
 
 
  
@@ -68,6 +68,7 @@ function writeTableWith(dataSource){
 //We create the datatable 
 
 var table = $('#incidents_table').DataTable({
+    "pageLength": 50,
     "deferRender": true,
     "data": dataSource,
     "rowReorder": {
@@ -77,6 +78,8 @@ var table = $('#incidents_table').DataTable({
 
         // This is where the hidden columns are rendered 
         "details": {
+            type: 'column',
+
             renderer: function ( api, rowIdx, columns ) {
                 var data = $.map( columns, function ( col, i ) {
                    
@@ -100,12 +103,7 @@ var table = $('#incidents_table').DataTable({
         }
 
     },
-    "columns": [{
-            "className": 'details-control',
-            "orderable": false,
-            "data": null,
-            "defaultContent": ''
-        },
+    "columns": [
         {
              "data": null,
             render: function(data,type,row, meta) {
@@ -134,6 +132,7 @@ var table = $('#incidents_table').DataTable({
 
                 return data;
             },
+            'className': 'priest-label details-control'
         },
           {
             "data": null,
@@ -236,7 +235,7 @@ var table = $('#incidents_table').DataTable({
     ],
 
     "order": [
-        [9, 'asc']
+        [8, 'asc']
     ]
 }).on( 'order.dt',  function () {  
        var pymChild = new pym.Child(); 
