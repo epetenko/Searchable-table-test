@@ -1,0 +1,757 @@
+.leaflet-overlay-pane svg path{
+    pointer-events: auto;
+}
+
+#njam-container {
+  font-family: 'Roboto', sans-serif;
+  fill: #333;
+  margin: 0;
+  max-width: 900px;
+}
+
+#njam-container div.btn-group.bootstrap-select {
+  margin-bottom: 30px;
+  width: 90%;
+}
+.liltopper {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+
+}
+
+.head {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-weight: 700;
+  color: black;
+  line-height: 1.2em;
+  font-weight:bold;
+  font-size: 36px;
+}
+
+.subhead {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-weight: 700;
+  color: black;
+  font-size: 22px;
+  font-weight: 100 !important;
+  margin-bottom: 5px;
+}
+
+.ass-line {
+  margin-left: 10px;
+
+}
+
+#date, #date-2 {
+  display: inline-block;
+}
+
+
+#icon {
+  display:inline;
+  float:left;
+  max-width: 40px;
+}
+
+.notes {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  font-family: "PT Serif",serif;
+  font-weight: 500;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+.tooltip .notes {
+    font-size:12px;
+}
+
+.element-item .notes {
+  font-size: 14px;
+}
+
+.category {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 2px;
+  text-transform: uppercase;
+
+}
+
+.Current,.CURRENT, .Current-key {
+  color: #55951b;
+  fill: #55951b;
+}
+
+.Current-key {
+    background-color: #55951b;;
+
+}
+
+.No, .NO, .No-key {
+  color: #05668D;
+  fill: #05668D;
+
+}
+
+.No-key {
+  color: #05668D;
+  fill: #05668D;
+    background-color: #05668D;
+
+
+}
+
+.key {
+  float: left;
+  margin-left: 4px;
+  padding: 4px;
+  height:25px;
+  font-family: 'Lato', sans-serif;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px #999 solid;
+  text-transform: uppercase;
+  font-weight:bold;
+}
+
+.Proposed, .PROPOSED, .Proposed-key{
+  color: #80CED7;
+    fill: #80CED7;
+
+}
+.Proposed-key{
+  color: #80CED7;
+    fill: #80CED7;
+  background-color: #80CED7;;
+
+}
+
+.Current-key, .No-key, .Proposed-key {
+  width:15px;
+  height:15px;
+  float:left;
+  margin-right: 2px;
+}
+
+#legend-intro {
+  clear:both;
+}
+
+
+ 
+
+
+#njam-container h1 {
+  font-size: 22px;
+}
+
+
+
+.muni_elex {
+  color: #333;
+}
+
+.muni_elex a {
+  color: #0078A8;
+}
+
+.waiting img {
+   margin: 5% 20%;
+    width: 20%;
+}
+
+.element-item {
+    position: relative;
+    float: left;
+    width: 93%;
+    height: auto;
+    margin: 25px 5px 5px 5px;
+    padding: 10px 0 10px 10px;
+    background-color: rgba(245,245,245, 0.5);
+/*    background: #F2F2F2;
+*//*    background-color: rgba(242, 242, 242, 0.5);
+*/    border: 1px dashed black;
+    color: black;
+}
+.element-item > * {
+    padding: 0;
+}
+
+.element-item h2 {
+  font-size: 22px;
+}
+
+.muni_elex {
+  color: #333;
+}
+
+.muni_grid {
+ width: 100%;
+ text-align: left;
+}
+
+.muni_grid td {
+   font-size: 13px;
+   max-width: 60px;
+}
+
+
+.grid {
+
+  min-height: 300px;
+
+}
+
+ 
+
+td.name.republican.won {
+  color:#67000d;
+  font-size: 15px;
+}
+
+td.name.democrat.won {
+  color: #08306b;
+  font-size: 15px;
+}
+
+div#winner {
+    width:90px;
+    display:inline-block;
+    font-size: 22px;
+    text-align: left;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+div#margin {
+    width:47%;
+    display:inline-block;
+    font-size: 17px;
+/*    text-transform: uppercase;
+*/    text-align: left;
+    margin: 10px 0;
+}
+
+
+div#margin span {
+
+  font-size: 25px;
+  font-weight: bold;
+
+}
+
+.muni_grid .name {
+  text-align:left;
+}
+
+.waiting img {
+  margin: 5% 20%;
+  width: 20%;
+}
+
+.njcounties {
+  border: 2px solid #333;
+}
+
+span#county1, span#town1 {
+  margin-top: 10px;
+}
+
+
+/*h2 {
+  font-size: 13px;
+  font-weight: bold;
+    color: #333;
+  margin: 0;
+/*  text-transform: uppercase;
+*/  
+/*}*/
+.town_name {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  color: black;
+
+  margin: 0px;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-left: 2px;
+}
+
+.county {
+  margin: 2px;
+  font-size: 11px;
+  border-bottom: 1px dashed #333;
+    font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  color: black;
+  font-weight: 100 !important;
+
+}
+
+
+h2.title {
+  font-size: 24px;
+  font-weight: bold;
+    color: #333;
+  margin: 20px 0;
+  text-transform: uppercase;
+  border-bottom: 0;
+}
+td {
+  padding: 3px;
+  font-size: 11.5px;
+}
+
+/*.sen_rep {
+  color: #67000d;
+}
+
+.sen_dem {
+  color: #08306b;
+}*/
+
+.name {
+  font-weight: bold;
+}
+.difference {
+  font-size: 18px;
+  color: #08306b;
+  font-weight: bold;
+}
+
+.difference_votes {
+  font-size: 14px;
+  color: #08306b;
+  font-weight: bold;
+}
+
+
+
+
+#map {
+  max-width: 620px;
+
+}
+
+.nj {
+
+        color: #FFF;
+
+}
+
+
+
+ .njmunis {
+
+  color: #FFF;
+
+}
+
+
+
+#njam-container .area {
+  opacity: 0.7;
+}
+
+.number {
+  font-weight: bold;
+  color: #993404;
+  font-size: 15px;
+}
+
+#infobox p {
+ color: #333;
+
+}
+#tooltip {
+  background: rgba(255, 255, 255, .95);
+  overflow:scroll;
+  border: 1px #999 solid;
+  position: absolute;
+  pointer-events: none;
+  float: right;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.tooltip{
+   position: absolute;
+   padding: 1px;
+  background: rgba(255, 255, 255, .9);
+
+  border: 1px #999 solid;
+  font-family: 'Lato', sans-serif !important;
+
+}
+
+.TrumpLegend, .TrumpLegend {
+  color: #333;
+  font-weight: bold;
+}
+
+
+
+
+
+
+.leaflet-container { 
+
+  background-color: #FFF !important;
+
+  }
+
+#legend, #legend2 {
+/*    padding: 0.5em 0 3.5em 0em;*/
+    width: 100%;
+    background: rgb(255, 255, 255); /* Fall-back for browsers that don't
+                                    support rgba */
+    background: rgba(255, 255, 255, .8);
+    font-size: 12px;
+    font-weight:bold;
+    /*
+    float: right;
+*/}
+
+.leaflet-bottom {
+
+    width: 70%;
+   background: rgb(255, 255, 255); /* Fall-back for browsers that don't
+                                    support rgba */
+    background: rgba(255, 255, 255, .8);
+  }
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .leaflet-bottom {
+  
+  }
+
+}
+
+li.key {
+    border-top-width: 15px;
+    border-top-style: solid;
+    font-size: .75em;
+    width: 10%;
+    padding-left: 0;
+    padding-right: 0;
+    float: left;
+    list-style-type: none;
+}
+
+.leaflet-top {
+/*  width: 80%;*/
+}
+
+
+  html, body {/*
+    height: 100%;*/
+    margin: 0;
+  }
+  
+  #mapcanvas{
+   
+    height:550px;
+/*    width: 100%;
+*/  }
+
+  
+
+#credit {
+  float: right;
+  clear:both;
+  font-size: 12px !important;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+
+#credit img{
+  width: 70px;
+  float: right;
+  padding-bottom: 10px;
+}
+
+#credit p{
+  clear: both;
+  text-align: right;
+}
+
+@media (min-width: 450px) {
+  #mapcanvas {
+    width: 75%;
+  }
+}
+
+@media (max-width: 450px) {
+/*  .leaflet-bottom {
+    height: 100px;
+    width: 100%;
+  }*/
+
+  #mapcanvas {
+  height: 350px!important;
+  width: 100%;
+ /* width: 85%;*/
+  cursor: pointer;
+}
+
+div#winner {
+    font-size: 16px;
+}
+
+div#margin {
+    font-size: 14px;
+   }
+
+   div#margin span {
+
+  font-size: 20px;
+
+}
+
+
+}
+body { font-family: 'Roboto', sans-serif;
+ padding-right: 0px; 
+ padding-left: 0px; 
+ height: auto; 
+ color: #444;
+ max-width: 700px; }
+
+
+
+ .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+ h2 {
+  font-size: 25px;
+  color: #48484A;
+  line-height: 30px;
+    }
+a {
+  color: #54198e;
+  font-size: 14px;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+p {
+  font-size: 14px;
+}
+
+select {
+  width: auto;
+}
+
+.credit, .source {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+
+/*Individual incidents table at the bottom*/
+
+div.download a {
+
+  color: #FFF!important;
+  padding: 10px;
+}
+
+.download {
+  float: right;
+  padding: 5px 10px;
+  background-color: #54198e;
+
+}
+
+.links {
+  float: left;
+}
+
+
+
+
+.source {
+
+  clear:right;
+}
+
+.dataTables_wrapper {
+  margin-top: 20px;
+}
+
+ table#incidents_table, table#incidents_table a, table#incidents_table.dataTable tbody tr{
+    font-size: 14px!important;
+
+  }
+
+  table#incidents_table thead {
+    visibility: hidden;
+  }
+
+.dataTables_info, .dataTables_paginate {
+  font-size: 15px;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+  background-color: #333;
+  top: 5px;
+  height: 22px;
+  width: 22px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+table .details-control, thead .details-control, tbody .details-control, tfoot .details-control, tr .details-control, td .details-control, th .details-control {
+  width: 10%;
+  font-weight:bold;
+}
+
+
+
+table.dataTable>tbody>tr.child ul {
+  display: inline;
+}
+
+table.dataTable>tbody>tr.child ul li {
+  width: auto;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child {
+  padding-left: 10px;
+}
+
+table.dataTable>tbody>tr.child span.dtr-data {
+  float: right;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+  background-color: #333;
+  top: 5px;
+  height: 22px;
+  width: 22px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+}
+
+table.dataTable tbody tr {
+  background-color: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+table.dataTable tr:hover td, table.dataTable tr:hover td.sorting_1, table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1, table.dataTable.display tbody tr.hover>.even.sorting_1 {
+  background-color: #F0F0F0!important;
+}
+
+table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even, table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd, table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1, table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+  background-color: #F7F7F7;
+}
+
+.dataTables_filter {
+  clear: both !important;
+  float: left !important;
+
+}
+
+.dataTables_length {
+  display: none;
+}
+
+.dataTables_info {
+  visibility: hidden;
+}
+
+
+
+
+
+
+
+
+/*Mobile view*/
+
+@media screen and (max-width: 520px) {
+h2 {
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.links {
+  float: left;
+  margin-top: 10px;
+}
+  
+  .dataTables_filter {
+    margin: 20px 0!important;
+  }
+
+  p, a, .credit, .source {
+  font-size: 14px;
+}
+
+a.download {
+  color: #FFF!important;
+}
+
+.download {
+  float: right;
+  padding: 5px 10px;
+  background-color: #54198e;
+
+}
+
+.source {
+  margin-top: 20px;
+}
+
+   table#incidents_table, table#incidents_table a, table#incidents_table.dataTable tbody tr{
+    font-size: 14px!important;
+
+  }
+
+  table#top_officers.display.dataTable.no-footer.dtr-inline.collapsed,table#top_officers.display.dataTable.no-footer.dtr-inline.collapsed,table#dept_table.display.dataTable.no-footer.dtr-inline.collapsed,table#officer_table.display.dataTable.no-footer.dtr-inline.collapsed, table#incidents_table.display.dataTable.no-footer.dtr-inline.collapsed {
+    margin: 0;
+    width: 100%;
+}
+
+
+
+table.dataTable>tbody>tr.child span.dtr-title {
+  font-size: 13px!important;
+}
+
+}
+      
+#njam-container {
+  font-family: 'Roboto', sans-serif;
+
+      }
