@@ -1,7 +1,10 @@
+L.GeoCSV=L.GeoJSON.extend({options:{titles:["lat","lng","popup"],latitudeTitle:"lat",longitudeTitle:"lng",fieldSeparator:";",lineSeparator:"\n",deleteDoubleQuotes:true,firstLineTitles:false},_propertiesNames:[],initialize:function(csv,options){this._propertiesNames=[];L.Util.setOptions(this,options);L.GeoJSON.prototype.initialize.call(this,csv,options)},addData:function(data){if(typeof data==="string"){var titulos=this.options.titles;if(this.options.firstLineTitles){data=data.split(this.options.lineSeparator);if(data.length<2)return;titulos=data[0];data.splice(0,1);data=data.join(this.options.lineSeparator);titulos=titulos.trim().split(this.options.fieldSeparator);for(var i=0;i<titulos.length;i++){titulos[i]=this._deleteDoubleQuotes(titulos[i])}this.options.titles=titulos}for(var i=0;i<titulos.length;i++){var prop=titulos[i].toLowerCase().replace(/[^\w ]+/g,"").replace(/ +/g,"_");if(prop==""||prop=="_")prop="prop-"+i;this._propertiesNames[i]=prop}data=this._csv2json(data)}return L.GeoJSON.prototype.addData.call(this,data)},getPropertyName:function(title){var pos=this.options.titles.indexOf(title),prop="";if(pos>=0)prop=this._propertiesNames[pos];return prop},getPropertyTitle:function(prop){var pos=this._propertiesNames.indexOf(prop),title="";if(pos>=0)title=this.options.titles[pos];return title},_deleteDoubleQuotes:function(cadena){if(this.options.deleteDoubleQuotes)cadena=cadena.trim().replace(/^"/,"").replace(/"$/,"");return cadena},_csv2json:function(csv){var json={};json["type"]="FeatureCollection";json["features"]=[];var titulos=this.options.titles;csv=csv.split(this.options.lineSeparator);for(var num_linea=0;num_linea<csv.length;num_linea++){var campos=csv[num_linea].trim().split(this.options.fieldSeparator),lng=parseFloat(campos[titulos.indexOf(this.options.longitudeTitle)]),lat=parseFloat(campos[titulos.indexOf(this.options.latitudeTitle)]);if(campos.length==titulos.length&&lng<180&&lng>-180&&lat<90&&lat>-90){var feature={};feature["type"]="Feature";feature["geometry"]={};feature["properties"]={};feature["geometry"]["type"]="Point";feature["geometry"]["coordinates"]=[lng,lat];for(var i=0;i<titulos.length;i++){if(titulos[i]!=this.options.latitudeTitle&&titulos[i]!=this.options.longitudeTitle){feature["properties"][this._propertiesNames[i]]=this._deleteDoubleQuotes(campos[i])}}json["features"].push(feature)}}return json}});L.geoCsv=function(csv_string,options){return new L.GeoCSV(csv_string,options)};
+
+
 // Most of the action here is described in Weed_map.js. Skip to ~373 to see where points are added, etc.
 var geoJsonObject;
 
-var pymChild = null;
+// var pymChild = null;
 
 $(document).ready(function() {
 var today = new Date();
@@ -46,7 +49,7 @@ $('#date').html(today);
         grid = $('.grid')
 
 
-    var mobile_threshold = 450;
+    var mobile_threshold = 600;
     var winwidth = parseInt(d3.select('#mapcanvas').style('width'))
     var winheight = parseInt(d3.select('#mapcanvas').style('height'))
 
@@ -55,9 +58,9 @@ $('#date').html(today);
 
     function isMobile(w) {
         if (w < mobile_threshold) {
-            return true
+            return 7
         } else {
-            return false
+            return 8
         }
     }
 
@@ -69,6 +72,7 @@ $('#date').html(today);
     map.createPane('labels');
     map.getPane('labels').style.zIndex = 550;
     map.getPane('labels').style.pointerEvents = 'none';
+
     var osm = new L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
         attribution: '©OpenStreetMap, ©CartoDB',
     });
@@ -77,7 +81,7 @@ $('#date').html(today);
         attribution: '©OpenStreetMap, ©CartoDB',
         pane: 'labels'
     }).addTo(map);
-    map.setView(new L.LatLng(44.095, -72.772), 8
+    map.setView(new L.LatLng(44.342130, -72.239627), isMobile
         // isMobile? 7.5:8.5
     );
 
@@ -97,6 +101,8 @@ $('#date').html(today);
     var spreadsheet_id = "1mAkQ0pXLmhNSYpgDsO-ruypLhAs3Hm4cZ6T-2wDQmII"
     queue()
         .defer(d3.json, "js/tl_2019_50_cousub.json")
+        // .defer(d3.json, "/wp-content/themes/vtd_s/js/data/tl_2019_50_cousub.json")
+        // .defer(d3.csv, "/wp-content/uploads/2019/10/Priest_by_assignment_test.csv")
         .defer(d3.csv, "data/Priest_by_assignment_test.csv")
         .await(ready);
 
@@ -275,10 +281,9 @@ function initializeTabletopObject(dataSpreadsheet){
 var table = null;
 // create the table container and object
 function writeTableWith(dataSource){
-    console.log(dataSource)
     //First, we create column headers. Any column header with the class 'all' will be shown by default, any header with the class 'none' will be hidden by default
 
-    $( "thead" ).append( "<tr><th class='all'>Name</th><th class='none'>Ordainment</th><th class='none'>Year faculties withdrawn</th><th class='none'>Year lacized</th><th class='none'>Retired</th><th class='none'>Died</th><th class='none'>Assignments</th><th class='none'>Additional notes</th></tr>" );
+    $( "thead" ).append( "<tr><th class='all'>Name</th><th class='none'>Ordainment</th><th class='none'>Assignments</th><th class='none'>Year faculties withdrawn</th><th class='none'>Year lacized</th><th class='none'>Retired</th><th class='none'>Died</th><th class='none'>Additional notes</th></tr>" );
 
 
  
@@ -286,7 +291,7 @@ function writeTableWith(dataSource){
 //We create the datatable 
 
  table = $('#incidents_table').DataTable({
-    "pageLength": 50,
+    "pageLength": 13,
     "deferRender": true,
     "data": dataSource,
     "rowReorder": {
@@ -303,16 +308,17 @@ function writeTableWith(dataSource){
                    
 
                     return col.hidden ?
-                        '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                            '<td style="font-weight:bold;">'+col.title+':'+'</td> '+
-                            '<td id="ass-table">'+ format(col.data) + '</td>'+
+                        '<div data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                            '<div style="font-weight:bold;vertical-align:top;">'+col.title+':'+'</div> '+
+                            '<div id="ass-table">'+ format(col.data) + '</div>'+
                         '</tr>' :
                         '';
                 } ).join('');
 
-            var pymChild = new pym.Child(); 
+            // var pymChild = new pym.Child(); 
                 return data ?
-                    $('<table/>').append( data ) :
+                    // $('<table/>').html('')
+                    $('<table class="assignments-table"/>').append( data ) :
                     false;
 
             }
@@ -328,8 +334,6 @@ function writeTableWith(dataSource){
 
                 // This is where each column of data is rendered, depending on what it's called in the json. This part renders the first and last name together in the same column. It also displays the first name and last name together but then lets you sort by last name.
 
-
-
                 if (type === 'display') {
                     data = '' +
                         data['First middle initial'] +
@@ -338,7 +342,6 @@ function writeTableWith(dataSource){
                 }
 
                 
-
                 else if (type ==='filter') {
                     data = data['First middle initial'] + ' ' + data['Last'];
                 }
@@ -365,7 +368,10 @@ function writeTableWith(dataSource){
                 return data;
             },
         },
-          {
+        {
+            "data": "Assignments"
+        },
+ {
 
              "data": null,
             render: function(data,type,row, meta) {
@@ -428,10 +434,6 @@ function writeTableWith(dataSource){
 
         },
         {
-            "data": "Assignments"
-        },
-
-        {
            "data": null,
             render: function(data,type,row, meta) {
 
@@ -455,26 +457,36 @@ function writeTableWith(dataSource){
     "order": [
         [8, 'asc']
     ]
-}).on( 'order.dt',  function () {  
-       var pymChild = new pym.Child(); 
-       } )
-        .on( 'search.dt', function () { 
-        var pymChild = new pym.Child(); 
- } )
-        .on( 'page.dt',   function () { 
+})
+// .on( 'order.dt',  function () {  
+//        var pymChild = new pym.Child(); 
+//        } )
+//         .on( 'search.dt', function () { 
+//         var pymChild = new pym.Child(); 
+//  } )
+//         .on( 'page.dt',   function () { 
 
-        var pymChild = new pym.Child(); 
+//         var pymChild = new pym.Child(); 
 
-} )
-        .on( 'length.dt',  function () {  
-       var pymChild = new pym.Child(); 
-       } )
+// } )
+//         .on( 'length.dt',  function () {  
+//        var pymChild = new pym.Child(); 
+//        } )
 
     function format(v) {
 
         if (v) { 
 
         ass_list = v.split(';')
+        ass_dict = [];
+        $.each(ass_list, function(i, t) {
+            ass_info = {};
+            town = t.split('--')
+            ass_info['Town'] = town[0]
+            ass_dict.push(ass_info)
+        })
+
+        // console.log(ass_dict);
         ass_holder = '<ul>';
 
         $.each(ass_list, function(index, value){
@@ -490,12 +502,17 @@ function writeTableWith(dataSource){
     }
 
 $('#incidents_table').on('click', 'td.details-control', function () {
-       
-       var pymChild = new pym.Child();  
+    // table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
+
+       // var pymChild = new pym.Child();  
     });
 
 
+table.on( 'responsive-display', function ( e, datatable, row, showHide, update ) {
 
+
+    console.log( 'Details for row '+row.index()+' '+(showHide ? 'shown' : 'hidden') );
+} );
 
 
     $( ".loading" ).hide();
@@ -511,7 +528,7 @@ $('#incidents_table').on('click', 'td.details-control', function () {
 };
 
     $('#incidents_table').on( 'draw.dt', function () {
-    var pymChild = new pym.Child(); 
+    // var pymChild = new pym.Child(); 
 } );
 
 
@@ -705,6 +722,7 @@ var points = g.selectAll("circle")
         .attr("r", function(d){
             return DemSize(d.values.totalvotes)
         })
+        .on('mouseover', town_tooltip)
         .on('click', mousemove)
 
 // Moves the points to correspond to Leaflet's latlang spot
@@ -790,13 +808,41 @@ update();
         //             return 0.4
         //         }
         //     })
+
+        function town_tooltip(d) {
+            feature.style({
+                    'stroke-opacity': 0.6,
+                    'stroke': '#444',
+                    "stroke-width": 0.5
+                })
+             d3.select(this.parentNode.appendChild(this))
+                .style({
+                    'stroke-opacity': 1,
+                    'stroke': '#5C5C5C',
+                    "stroke-width": 1.5
+                });
+            div.style("opacity", .95)
+                .attr('style', 'pointer-events:visiblePainted;')
+                .style('z-index', 1000)
+            div.html("<div class='category " + d.key + "''>" + d.key + "</div><div id='infobox'><span>" + d.values.totalvotes+"</span> priests assigned here</div><div id='infobox'>Click to view priests</div>")
+            div
+               .style("left", (mobileoffset(d3.event.pageX) + 10) + "px")
+               .style("z-index", 1400)
+               .style("top", (verticalmobileoffset(d3.event.pageY)) + "px");
+
+        }
         function mousemove(d) {
             // feature.style({
             //     'stroke-opacity': 0.6,
             //     'stroke': '#444',
             //     "stroke-width": 0.5
             // })
+
+            location.hash = '#incidents_table';
+
             table.search( d.key).draw();
+
+
             // d3.select(this.parentNode.appendChild(this))
             //     // .style({
             //     //     'stroke-opacity': 1,
@@ -828,9 +874,13 @@ update();
             //     }
             // })
 
-            d3.select('.muni_elex').html(priest_holder + "</div>")
+            // d3.select('.muni_elex').html(priest_holder + "</div>")
 
-            function mobileoffset(d) {
+            
+        }
+
+
+        function mobileoffset(d) {
 
                 var xoff = winwidth - d;
                 var xper = xoff / winwidth;
@@ -844,29 +894,15 @@ update();
                 }
 
             }
+
+        function verticalmobileoffset (d) {
+            if (winwidth < 400) {
+                    return d - 400;
+                } else {
+                    return d - 200;
+                }
         }
 
-
-
-
-        function mobileoffset(d) {
-
-            var xoff = winwidth - d;
-
-            var xper2 = xoff / winwidth;
-
-
-            var xper = 1 - xper2
-
-            if (xper > 0.50) {
-
-
-                return -175;
-            } else if (xper <= 0.50) {
-                return -10;
-            }
-
-        }
 
         d3.select("#Open-button").on("click", function() {
             points
@@ -918,9 +954,9 @@ update();
 
 
 
-        var pymChild = new pym.Child();
+        // var pymChild = new pym.Child();
 
-        pymChild.sendHeight();
+        // pymChild.sendHeight();
     }
 
 function test_hyperlink(link) {

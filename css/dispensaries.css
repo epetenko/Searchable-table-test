@@ -3,18 +3,21 @@
 }
 
 #njam-container {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Merriweather', serif;
   fill: #333;
   margin: 0;
-  max-width: 900px;
 }
 
+
+.leaflet-top {
+  z-index: 998;
+}
 #njam-container div.btn-group.bootstrap-select {
   margin-bottom: 30px;
   width: 90%;
 }
 .liltopper {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Merriweather', sans-serif;
   font-weight: bold;
   font-weight: 700;
   text-transform: uppercase;
@@ -23,7 +26,7 @@
 }
 
 .head {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Merriweather', sans-serif;
   font-weight: bold;
   font-weight: 700;
   color: black;
@@ -33,7 +36,7 @@
 }
 
 .subhead {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Merriweather', sans-serif;
   font-weight: bold;
   font-weight: 700;
   color: black;
@@ -73,9 +76,13 @@
 
 }
 
+
+
 .tooltip .notes {
     font-size:12px;
 }
+
+
 
 .element-item .notes {
   font-size: 14px;
@@ -149,12 +156,6 @@
 }
 
 
- 
-
-
-#njam-container h1 {
-  font-size: 22px;
-}
 
 
 
@@ -314,10 +315,7 @@ h2.title {
   text-transform: uppercase;
   border-bottom: 0;
 }
-td {
-  padding: 3px;
-  font-size: 11.5px;
-}
+
 
 /*.sen_rep {
   color: #67000d;
@@ -350,19 +348,7 @@ td {
 
 }
 
-.nj {
 
-        color: #FFF;
-
-}
-
-
-
- .njmunis {
-
-  color: #FFF;
-
-}
 
 
 
@@ -397,8 +383,13 @@ td {
   background: rgba(255, 255, 255, .9);
 
   border: 1px #999 solid;
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Helvetica Neue', sans-serif !important;
 
+}
+
+#infobox span {
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .TrumpLegend, .TrumpLegend {
@@ -447,6 +438,7 @@ td {
 
 }
 
+
 li.key {
     border-top-width: 15px;
     border-top-style: solid;
@@ -463,16 +455,9 @@ li.key {
 }
 
 
-  html, body {/*
-    height: 100%;*/
-    margin: 0;
-  }
+
   
-  #mapcanvas{
-   
-    height:550px;
-/*    width: 100%;
-*/  }
+
 
   
 
@@ -480,7 +465,7 @@ li.key {
   float: right;
   clear:both;
   font-size: 12px !important;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Merriweather', serif;
 
 }
 
@@ -496,9 +481,22 @@ li.key {
   text-align: right;
 }
 
+.links {
+  clear:both;
+}
+
 @media (min-width: 450px) {
   #mapcanvas {
-    width: 75%;
+    width: 65%;
+    float:left;
+    height:700px;
+  }
+
+  .container-fluid {
+    width:35%;
+  float:right;
+  height:700px;
+  overflow: scroll;
   }
 }
 
@@ -508,8 +506,16 @@ li.key {
     width: 100%;
   }*/
 
+  .container-fluid {
+    width: 300px;
+    clear:both;
+/*    position: absolute; 
+    bottom: 0;
+*/
+  }
+
   #mapcanvas {
-  height: 350px!important;
+    min-height:450px;
   width: 100%;
  /* width: 85%;*/
   cursor: pointer;
@@ -531,12 +537,7 @@ div#margin {
 
 
 }
-body { font-family: 'Roboto', sans-serif;
- padding-right: 0px; 
- padding-left: 0px; 
- height: auto; 
- color: #444;
- max-width: 700px; }
+
 
 
 
@@ -545,25 +546,7 @@ body { font-family: 'Roboto', sans-serif;
     padding-left: 0px;
 }
 
- h2 {
-  font-size: 25px;
-  color: #48484A;
-  line-height: 30px;
-    }
-a {
-  color: #54198e;
-  font-size: 14px;
-  text-decoration: underline;
-  font-weight: 700;
-}
 
-p {
-  font-size: 14px;
-}
-
-select {
-  width: auto;
-}
 
 .credit, .source {
   font-size: 14px;
@@ -587,9 +570,6 @@ div.download a {
 
 }
 
-.links {
-  float: left;
-}
 
 
 
@@ -601,19 +581,25 @@ div.download a {
 
 .dataTables_wrapper {
   margin-top: 20px;
+  z-index: 500;
 }
 
  table#incidents_table, table#incidents_table a, table#incidents_table.dataTable tbody tr{
     font-size: 14px!important;
 
   }
+table#incidents_table tr {
+      border-bottom: 1px solid #48484A !important;
 
+}
   table#incidents_table thead {
     visibility: hidden;
+    display:none;
   }
 
 .dataTables_info, .dataTables_paginate {
   font-size: 15px;
+  text-align: left !important;
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
@@ -625,12 +611,107 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
   cursor: pointer;
 }
 
+
+  table.assignments-table,
+  thead.assignments-table,
+  tbody.assignments-table,
+  th.assignments-table,
+  td.assignments-table,
+  tr.assignments-table {
+    display: block;
+  }
+
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead.assignments-table tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+
+  tr.assignments-table {
+    border: 1px solid #ccc;
+  }
+  td.assignments-table {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-top: 20%;
+    text-align: right;
+    height: 70%;
+  }
+  table.assignments-table td.center {
+    text-align: right;
+  }
+  table.assignments-table td {
+    padding: 30px 10px 3px 10px;
+  }
+  td.assignments-tables:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  /*
+    Label the data for mobile use
+    */
+  td.assignments-table:nth-of-type(1):before {
+    content: "Ordainment";
+    font-weight: bold;
+    text-align: left;
+  }
+  td.assignments-table:nth-of-type(2):before {
+    content: "Year faculties withdrawn";
+    font-weight: bold;
+    text-align: left;
+  }
+  td.assignments-table:nth-of-type(3):before {
+    content: "Year lacized";
+    font-weight: bold;
+    text-align: left;
+  }
+  td.assignments-table:nth-of-type(4):before {
+    content: "Retired";
+    font-weight: bold;
+    text-align: left;
+  }
+  td.assignments-table:nth-of-type(5):before {
+    content: "Died";
+    font-weight: bold;
+    text-align: left;
+  }
+/*.details-control {
+  background-color: #48484A !important;
+  font-weight:500 !important;
+  color: #fff;
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+
+.parent{
+  background-color: #48484A !important;
+  font-weight:500 !important;
+  color: #fff;
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+*/
+
+
 table .details-control, thead .details-control, tbody .details-control, tfoot .details-control, tr .details-control, td .details-control, th .details-control {
   width: 10%;
   font-weight:bold;
 }
 
-
+.priest-label {
+  font-size: 15px;
+}
 
 table.dataTable>tbody>tr.child ul {
   display: inline;
@@ -700,10 +781,7 @@ table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even, tab
 /*Mobile view*/
 
 @media screen and (max-width: 520px) {
-h2 {
-  font-size: 23px;
-  line-height: 1.3;
-}
+
 
 .links {
   float: left;
@@ -714,9 +792,6 @@ h2 {
     margin: 20px 0!important;
   }
 
-  p, a, .credit, .source {
-  font-size: 14px;
-}
 
 a.download {
   color: #FFF!important;
@@ -735,6 +810,7 @@ a.download {
 
    table#incidents_table, table#incidents_table a, table#incidents_table.dataTable tbody tr{
     font-size: 14px!important;
+    width: 100%
 
   }
 
@@ -750,8 +826,3 @@ table.dataTable>tbody>tr.child span.dtr-title {
 }
 
 }
-      
-#njam-container {
-  font-family: 'Roboto', sans-serif;
-
-      }

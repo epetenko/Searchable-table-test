@@ -1,0 +1,252 @@
+/* HEADERS */
+/* note: open sans and merriwether fonts loaded from google in headers.  */
+
+@font-face {
+    font-family: 'Polyglot';
+    src: url('/wp-content/themes/vtd_s/fonts/ttwpgott-webfont.woff2') format('woff2'),
+         url('/wp-content/themes/vtd_s/fonts/ttwpgott-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.typewriter {
+  font-family: Polyglot;
+}
+
+.featured h2 a, .feature-with-images a, h1.entry-title{
+    display:block;
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    color: #1c2242;
+    text-decoration: none;
+    line-height: 34px;
+    padding-bottom: 10px;
+}
+.home .featured h2 a{
+    font-size:1em;
+}
+.feature-with-images a{
+    font-size:1.7em;
+}
+.home h3.cat-name{
+    padding-top:0;
+    margin:25px 0 10px 0;
+}
+.author{
+    color: #104467;
+}
+.byline-line2{
+    padding:5px 0 0 0;
+}
+.feature-with-images{
+    margin-top:10px;
+    padding: 0;
+    list-style: none;
+}
+.lead-image img, .list-2col img{
+    width: 100%;
+    display: block;
+}
+ul.list-2col, .lead-image .list-2col{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+h2 {
+  font-size: 1.9rem;
+  font-size: 1.9em;
+}
+
+.featured h2 {
+  font-size: 2.1rem;
+  font-size: 2.1em;
+  margin-top: 10px;
+}
+
+
+
+
+/* CATEGORY PALLETTE */
+
+.cat-name {
+    padding: 10px 10px 0 20px;
+}
+
+.state-news p {
+  margin: 0;
+}
+
+.cat-region {
+  color: #666;
+}
+
+.cat-environment, .cat-energy-2 {
+  background: url('images/categories/cat-environment.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-environment a, .cat-energy-2 a {
+  color: #555e14;
+}
+
+.cat-business-economy {
+  background: url('images/categories/cat-business.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-business-economy a {
+  color: #e95e1d;
+}
+
+.cat-education {
+  background: url('images/categories/cat-education.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-education a {
+  color: #78113a;
+}
+
+.cat-courts-corrections {
+  background: url('images/categories/cat-criminaljustice.png') no-repeat 0 0;
+  background-size: 28px 30px;
+ }
+.cat-courts-corrections a {
+    color: #5e5e5e;
+}
+
+
+.cat-commentary {
+  color: #c8cf2c;
+  background: url('images/categories/cat-commentary.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-commentary a {
+  color: #c8cf2c;
+}
+
+.cat-politic {
+  color: #f7c22c;
+  background: url('images/categories/cat-politics.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-politic a {
+  color: #f7c22c;
+}
+
+.cat-people-places {
+  background: url('images/categories/cat-peopleandplaces.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-people-places a {
+  color: #000;
+}
+
+.cat-health-care {
+  background: url('images/categories/cat-healthcare.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-health-care a {
+  color: #00b0b9;
+}
+
+.cat-regions {
+  background: url('images/categories/cat-regions.png') no-repeat 0 0;
+  background-size: 28px 30px;
+}
+
+.cat-regions a {
+  color: #c9cf2c;
+}
+
+.cat-name a {
+	background-size: 26px;
+	padding-left: 30px;
+	height: 23px;
+	padding-top: 8px;
+	margin-left: -20px;
+}
+
+.category-sections .cat-name {
+  margin-left: -5px;
+}
+
+
+/* QUOTES */
+
+.quote {
+  background: #104467;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 1.3em;
+  font-size: 1.3rem;
+  line-height: 24px;
+  font-family: Polyglot;
+
+}
+.quote a {
+  text-decoration: underline;
+  color:   #c8cf2c;
+}
+
+.quote blockquote {   
+  padding: 2em 1em; margin: 0; 
+}
+
+
+/* MIXED */
+.title-mixed-color:after{content:" ]"; color: #c8cf2c;}
+.title-mixed-color:before{content:"[ "; color: #c8cf2c;}
+.title-mixed-color, .title-mixed-color a {color: #104467;margin-bottom:10px; text-transform: uppercase;}
+
+.title-white-brackets:after{content:"]"; color: #FFF;}
+.title-white-brackets:before{content:"["; color: #FFF;}
+.title-white-brackets, .title-white-brackets a {color: #c8cf2c;}
+
+
+/* SEPARATOR */
+
+.mixed-rule-bottom:after {
+    display: block;
+    position: relative;
+    margin-top: .65em;
+    clear: both;
+    content: "";
+    width: 100%;
+    border-right: 20px white solid;
+    border-left: 300px #c8cf2c solid;
+    background-color: #104467;
+    height: 5px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+          box-sizing: border-box;         /* Opera/IE 8+ */
+  z-index: -1;
+  margin-bottom: 10px;
+}
+
+.mixed-rule-small:after {
+    display: block;
+    position: relative;
+    margin-top: .65em;
+    clear: both;
+    content: "";
+    width: 100%;
+    border-right: 20px white solid;
+    border-left: 100px #c8cf2c solid;
+    background-color: #104467;
+    height: 5px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+          box-sizing: border-box;         /* Opera/IE 8+ */
+  z-index: -1;
+  margin-bottom: 10px;
+}
+
+
